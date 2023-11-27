@@ -27,7 +27,8 @@ class MyApp extends StatelessWidget {
               )
         )
       ),
-      home: regsiterPageView(),
+      getPages: routes,
+      initialRoute: '/login',
     );
   }
 }
