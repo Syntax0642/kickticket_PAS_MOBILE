@@ -36,7 +36,7 @@ class loginPageView extends GetView<loginPageController>{
                 ),
             Container(
               width: width,
-              height: 600,
+              height: 640,
               decoration: BoxDecoration(
                 border: Border.all(width: 1, color: Colors.grey),
                 gradient: LinearGradient(
