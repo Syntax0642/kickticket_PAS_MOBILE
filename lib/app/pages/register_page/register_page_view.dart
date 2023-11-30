@@ -38,7 +38,7 @@ class regsiterPageView extends GetView<registerPageController> {
                 ),
                 Container(
                   width: width,
-                  height: 700,
+                  height: 734,
                   decoration: BoxDecoration(
                     border: Border.all(width: 1, color: Colors.grey),
                     gradient: LinearGradient(
@@ -123,7 +123,7 @@ class regsiterPageView extends GetView<registerPageController> {
                                     ),
                                   ),
                               ),
-                              SizedBox(height: size.height*0.065,),
+                              SizedBox(height: size.height*0.06,),
                               Obx(() =>
                                 controller.isLoading.value?
                                     Container(

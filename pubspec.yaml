@@ -38,6 +38,9 @@ dependencies:
   get:
   http:
   shared_preferences:
+  flutter_svg:
+  lottie:
+  smooth_page_indicator:
   fluttertoast:
   introduction_screen:
   font_awesome_flutter:

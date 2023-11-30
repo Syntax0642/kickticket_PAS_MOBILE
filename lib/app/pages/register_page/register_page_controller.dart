@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:kickticket/app/pages/register_page/register_page_view.dart';
 import 'dart:convert';
 import 'package:kickticket/common/reuse_component/toast_message.dart';
 
@@ -49,5 +50,17 @@ class registerPageController extends GetxController{
       successfulRegister.value = false;
       print("status code : ${response.statusCode.toString()}");
     }
+  }
+
+  @override
+  void onInit() {
+    super.onInit();
+    Future.delayed(Duration.zero, () {
+      Get.to(
+        regsiterPageView(),
+        transition: Transition.native, // Choose your desired transition animation
+        duration: Duration(milliseconds: 500), // Adjust the duration as needed
+      );
+    });
   }
 }
