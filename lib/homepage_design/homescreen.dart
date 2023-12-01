@@ -7,12 +7,11 @@ class HomeScreen extends StatelessWidget {
 
   final List<ModelProduct> products = [
     ModelProduct("Title 1", "Date 1", "assets/splash.png", FontAwesomeIcons.mapMarkerAlt),
-    ModelProduct("Title 1", "Date 1", "assets/splash.png", FontAwesomeIcons.mapMarkerAlt),
+    ModelProduct("Title 1", "Date 2", "assets/splash.png", FontAwesomeIcons.mapMarkerAlt),
     ModelProduct("Title 1", "Date 1", "assets/splash.png", FontAwesomeIcons.mapMarkerAlt),
     ModelProduct("Title 1", "Date 1", "assets/splash.png", FontAwesomeIcons.mapMarkerAlt),
     ModelProduct("Title 1", "Date 1", "assets/splash.png", FontAwesomeIcons.mapMarkerAlt),
   ];
-
 
   @override
   Widget build(BuildContext context) {
@@ -148,7 +147,6 @@ class HomeScreen extends StatelessWidget {
           ),
       SizedBox(height: 10),
       ProductWidget(products: products),
-
       ]
       ),
     );

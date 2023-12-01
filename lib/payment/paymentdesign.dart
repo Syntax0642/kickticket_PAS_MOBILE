@@ -10,6 +10,15 @@ class PaymentDesign extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       home: Scaffold(
+        appBar: AppBar(
+          title: Text('Payment'),
+            backgroundColor: Colors.deepPurple,
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back), onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ),
         body: Padding(
           padding: const EdgeInsets.fromLTRB(16.0, 90.0, 16.0, 16.0),
           child: Column(

@@ -3,6 +3,7 @@ import 'package:kickticket/Favorite/favdesign.dart';
 import 'package:kickticket/Payment/paymentdesign.dart';
 import 'package:kickticket/Ticket/ticketdesign.dart';
 import 'package:kickticket/homepage_design/homescreen.dart';
+import 'package:kickticket/profile/profiledesign.dart';
 
 void main() {
   runApp(const MyApp());
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home:  PaymentDesign(),
+      home:  ProfileScreen(),
     );
   }
 }
