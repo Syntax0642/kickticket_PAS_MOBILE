@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:kickticket/app/pages/homepage/homepage_binding.dart';
-import 'package:kickticket/app/pages/homepage/homepage_view.dart';
+import 'package:kickticket/app/pages/item_navigation/homepage/homepage_binding.dart';
+import 'package:kickticket/app/pages/item_navigation/item_navigation.dart';
 import 'package:kickticket/app/pages/login_page/login_page_binding.dart';
 import 'package:kickticket/app/pages/onboarding_page/onboarding_binding.dart';
 import 'package:kickticket/app/pages/onboarding_page/onboarding_view.dart';
@@ -9,6 +9,8 @@ import 'package:kickticket/app/pages/register_page/register_page_view.dart';
 import 'package:kickticket/app/pages/login_page/login_page_view.dart';
 import 'package:kickticket/app/pages/splash_screen_page/splash_binding.dart';
 import 'package:kickticket/app/pages/splash_screen_page/splash_view.dart';
+
+import '../../app/pages/item_navigation/homepage/homepage_view.dart';
 
 List<GetPage> routes = [
   GetPage(
@@ -33,5 +35,10 @@ List<GetPage> routes = [
     name: '/homepage',
     page:() =>  homePageView(),
     binding: homePageBinding(),
+  ),
+  GetPage(
+    name: '/a',
+    page:() =>  NavigationExample(),
+    // binding: homePageBinding(),
   ),
 ];
