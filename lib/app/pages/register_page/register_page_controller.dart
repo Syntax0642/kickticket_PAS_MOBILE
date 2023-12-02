@@ -22,15 +22,20 @@ class registerPageController extends GetxController{
     isLoading.value = true;
     final response = await http.post(
       Uri.parse("https://mediadwi.com/api/latihan/register-user"),
-      headers: <String, String>{
+      headers:{
         'Content-Type': 'application/x-www-form-urlencoded',
       },
-      body: <String, String>{
-        'username': username,
-        'email': email,
-        'password': password,
+      body: {
+        'username': "adaffaaa",
+        'email': "aaaaaa@gmail.com",
+        'password': "a2aa13123",
       },
     );
+
+    print(response.body);
+    print(username);
+    print(email);
+    print(password);
     if (response.statusCode == 200) {
       Map<String, dynamic> jsonResponse = json.decode(response.body);
       bool status = jsonResponse['status'];

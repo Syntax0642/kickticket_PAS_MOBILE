@@ -16,14 +16,10 @@ class SignUpButton extends GetView<registerPageController>{
       height: 50,
       child: ElevatedButton(
         onPressed: () async{
+
           if(formKey.currentState!.validate()){
-            if(!(emailTextEditing.text == "" && passwordTextEditing.text == "")){
               await controller.signin(
                   usernameTextEditing.text, emailTextEditing.text, passwordTextEditing.text);
-            } else if(controller.successfulRegister.value) {
-              controller.message.value = "Please fill username and password";
-              controller.successfulRegister.value = false;
-            }
           }
         },
         style: ElevatedButton.styleFrom(
