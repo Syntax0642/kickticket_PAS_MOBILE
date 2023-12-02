@@ -12,8 +12,8 @@ class splashController extends GetxController{
   void checkSharedPreference() async{
     prefs = await SharedPreferences.getInstance();
     Future.delayed(Duration(seconds: 2), () async {
-      if(prefs.getString('token') == null){
-        Get.offNamed('/onboard');
+      if(prefs.getString('token') == null || prefs.getString('token') == ""){
+        Get.offNamed('/register');
       }else{
         Get.offNamed('/homepage');
       }
