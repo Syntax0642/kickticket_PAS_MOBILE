@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
         )
       ),
       getPages: routes,
-      initialRoute: '/splash',
+      initialRoute: '/a',
     );
   }
 }
