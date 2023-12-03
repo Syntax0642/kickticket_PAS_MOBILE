@@ -4,7 +4,9 @@ import 'package:kickticket/app/pages/login_page/login_page_controller.dart';
 import 'homepage_controller.dart';
 import 'widget/bottom_navigation_bar.dart';
 
+
 class homePageView extends GetView<homePageController> {
+
   homePageView({super.key});
 
   @override
@@ -449,3 +451,4 @@ class homePageView extends GetView<homePageController> {
     );
   }
 }
+
