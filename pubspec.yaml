@@ -104,6 +104,11 @@ flutter:
            - asset: assets/fonts/Poppins/Poppins-Medium.otf
              weight: 400
 
+       - family: Poppins-regular
+         fonts:
+           - asset: assets/fonts/Poppins/Poppins-Regular.otf
+
+
 
   #
   # For details regarding fonts from package dependencies,

@@ -50,7 +50,7 @@ class loginPageController extends GetxController {
         successfulLogin.value = true;
         isLoading.value = false;
         print("INI UDAH MASUK KE LOGIN HEHEHE");
-        Get.offNamed("/homepage");
+        Get.offNamed("/menu");
       } else {
         this.message.value = message;
         successfulLogin.value = false;

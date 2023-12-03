@@ -102,7 +102,7 @@ class loginPageView extends GetView<loginPageController>{
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          loginTextField(textEditingController: controller.emailTextEditingController, hintText: "insert your email", icon: Icons.email, labelText: "Email", isPass: false),
+                          loginTextField(textEditingController: controller.emailTextEditingController, hintText: "insert your username", icon: Icons.email, labelText: "Username", isPass: false),
                           SizedBox(height: size.height*0.03,),
                           loginTextField(textEditingController: controller.passwordTextEditingController, hintText: "insert your password", icon: Icons.lock, labelText: "Password", isPass: true),
                           Obx(
