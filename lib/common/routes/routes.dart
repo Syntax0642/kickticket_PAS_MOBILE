@@ -45,10 +45,7 @@ List<GetPage> routes = [
     name: '/menu',
     page:() =>  Bottom_Nav(),
   ),
-    name: '/a',
-    page:() =>  NavigationExample(),
-    // binding: homePageBinding(),
-  ),
+
   GetPage(
     name: '/detail',
     page:() =>  detailPageView(),

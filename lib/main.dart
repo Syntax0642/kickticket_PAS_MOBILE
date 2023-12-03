@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         )
       ),
       getPages: routes,
-      initialRoute: '/detail',
+      initialRoute: '/splash',
     );
   }
 }
