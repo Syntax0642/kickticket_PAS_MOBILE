@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:kickticket/app/pages/detail_page/detail_page_binding.dart';
+import 'package:kickticket/app/pages/detail_page/detail_page_view.dart';
 import 'package:kickticket/app/pages/item_navigation/homepage/homepage_binding.dart';
 
 import 'package:kickticket/app/pages/item_navigation/homepage/homepage_view.dart';
@@ -46,5 +48,10 @@ List<GetPage> routes = [
     name: '/a',
     page:() =>  NavigationExample(),
     // binding: homePageBinding(),
+  ),
+  GetPage(
+    name: '/detail',
+    page:() =>  detailPageView(),
+    binding: detailPageBinding(),
   ),
 ];
