@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class FavDesign extends StatelessWidget {
   const FavDesign({Key? key}) : super(key: key);
 
-  final String imagePath = 'assets/basket.jpeg';
+  final String imagePath = 'assets/images/basket.png';
 
   @override
   Widget build(BuildContext context) {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:kickticket/app/pages/profile/widget/avatar.dart';
-import 'package:kickticket/app/pages/profile/widget/profile_model.dart';
+import 'package:kickticket/app/pages/item_navigation/profile/widget/avatar.dart';
+import 'package:kickticket/app/pages/item_navigation/profile/widget/profile_model.dart';
 
 
 class ProfileScreen extends StatelessWidget {
