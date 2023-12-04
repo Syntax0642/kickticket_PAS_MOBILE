@@ -266,7 +266,6 @@ class Embedded {
   );
 
   Map<String, dynamic> toJson() => {
-    "venues": List<dynamic>.from(venues.map((x) => x.toJson())),
     "attractions": List<dynamic>.from(attractions.map((x) => x.toJson())),
   };
 }
@@ -279,7 +278,7 @@ class Attraction {
   String url;
   String locale;
   ExternalLinks externalLinks;
-  List<String> aliases;
+  // List<String> aliases;
   List<Image> images;
   List<Classification> classifications;
   UpcomingEvents upcomingEvents;
@@ -293,7 +292,7 @@ class Attraction {
     required this.url,
     required this.locale,
     required this.externalLinks,
-    required this.aliases,
+    // required this.aliases,
     required this.images,
     required this.classifications,
     required this.upcomingEvents,
@@ -308,7 +307,7 @@ class Attraction {
     url: json["url"],
     locale: json["locale"],
     externalLinks: ExternalLinks.fromJson(json["externalLinks"]),
-    aliases: List<String>.from(json["aliases"].map((x) => x)),
+    // aliases: List<String>.from(json["aliases"].map((x) => x)),
     images: List<Image>.from(json["images"].map((x) => Image.fromJson(x))),
     classifications: List<Classification>.from(json["classifications"].map((x) => Classification.fromJson(x))),
     upcomingEvents: UpcomingEvents.fromJson(json["upcomingEvents"]),
@@ -323,7 +322,7 @@ class Attraction {
     "url": url,
     "locale": locale,
     "externalLinks": externalLinks.toJson(),
-    "aliases": List<dynamic>.from(aliases.map((x) => x)),
+    // "aliases": List<dynamic>.from(aliases.map((x) => x)),
     "images": List<dynamic>.from(images.map((x) => x.toJson())),
     "classifications": List<dynamic>.from(classifications.map((x) => x.toJson())),
     "upcomingEvents": upcomingEvents.toJson(),
@@ -490,7 +489,7 @@ class Venue {
   bool test;
   String url;
   String locale;
-  List<String> aliases;
+  // List<String> aliases;
   List<Image> images;
   String postalCode;
   String timezone;
@@ -501,7 +500,7 @@ class Venue {
   Location location;
   List<Genre> markets;
   List<Dma> dmas;
-  Social social;
+  // Social social;
   BoxOfficeInfo boxOfficeInfo;
   String parkingDetail;
   String accessibleSeatingDetail;
@@ -516,7 +515,7 @@ class Venue {
     required this.test,
     required this.url,
     required this.locale,
-    required this.aliases,
+    // required this.aliases,
     required this.images,
     required this.postalCode,
     required this.timezone,
@@ -527,7 +526,7 @@ class Venue {
     required this.location,
     required this.markets,
     required this.dmas,
-    required this.social,
+    // required this.social,
     required this.boxOfficeInfo,
     required this.parkingDetail,
     required this.accessibleSeatingDetail,
@@ -543,7 +542,7 @@ class Venue {
     test: json["test"],
     url: json["url"],
     locale: json["locale"],
-    aliases: List<String>.from(json["aliases"].map((x) => x)),
+    // aliases: List<String>.from(json["aliases"].map((x) => x)),
     images: List<Image>.from(json["images"].map((x) => Image.fromJson(x))),
     postalCode: json["postalCode"],
     timezone: json["timezone"],
@@ -554,7 +553,7 @@ class Venue {
     location: Location.fromJson(json["location"]),
     markets: List<Genre>.from(json["markets"].map((x) => Genre.fromJson(x))),
     dmas: List<Dma>.from(json["dmas"].map((x) => Dma.fromJson(x))),
-    social: Social.fromJson(json["social"]),
+    // social: Social.fromJson(json["social"]),
     boxOfficeInfo: BoxOfficeInfo.fromJson(json["boxOfficeInfo"]),
     parkingDetail: json["parkingDetail"],
     accessibleSeatingDetail: json["accessibleSeatingDetail"],
@@ -563,32 +562,7 @@ class Venue {
     links: AttractionLinks.fromJson(json["_links"]),
   );
 
-  Map<String, dynamic> toJson() => {
-    "name": name,
-    "type": type,
-    "id": id,
-    "test": test,
-    "url": url,
-    "locale": locale,
-    "aliases": List<dynamic>.from(aliases.map((x) => x)),
-    "images": List<dynamic>.from(images.map((x) => x.toJson())),
-    "postalCode": postalCode,
-    "timezone": timezone,
-    "city": city.toJson(),
-    "state": state.toJson(),
-    "country": country.toJson(),
-    "address": address.toJson(),
-    "location": location.toJson(),
-    "markets": List<dynamic>.from(markets.map((x) => x.toJson())),
-    "dmas": List<dynamic>.from(dmas.map((x) => x.toJson())),
-    "social": social.toJson(),
-    "boxOfficeInfo": boxOfficeInfo.toJson(),
-    "parkingDetail": parkingDetail,
-    "accessibleSeatingDetail": accessibleSeatingDetail,
-    "generalInfo": generalInfo.toJson(),
-    "upcomingEvents": upcomingEvents.toJson(),
-    "_links": links.toJson(),
-  };
+
 }
 
 class Address {
