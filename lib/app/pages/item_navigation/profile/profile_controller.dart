@@ -17,6 +17,8 @@ class ProfileController extends GetxController{
   }
 
   signout() async {
+
+    prefs = await SharedPreferences.getInstance();
     prefs.clear();
     Get.offNamed("/login");
   }

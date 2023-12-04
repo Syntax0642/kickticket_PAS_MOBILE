@@ -44,7 +44,7 @@ class ProfileScreen extends GetView<ProfileController> {
             ),
             ProfileMenu(
               text: "Log Out",
-              press: ()  {controller.signout();},
+              press: ()  async{controller.signout();},
             ),
           ],
         ),
