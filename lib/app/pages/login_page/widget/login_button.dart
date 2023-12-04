@@ -5,11 +5,11 @@ import 'package:kickticket/app/pages/login_page/login_page_controller.dart';
 
 class logInButton extends GetView<loginPageController>{
   logInButton({super.key,
-    required this.emailTextEditing,
+    required this.usernameTextEditing,
     required this.passwordTextEditing,
     required this.formKey
   });
-  final TextEditingController emailTextEditing, passwordTextEditing;
+  final TextEditingController usernameTextEditing, passwordTextEditing;
   final GlobalKey<FormState> formKey;
 
   @override
@@ -20,9 +20,9 @@ class logInButton extends GetView<loginPageController>{
       child: ElevatedButton(
         onPressed: () async{
           if(formKey.currentState!.validate()){
-            if(!(emailTextEditing.text == "" && passwordTextEditing.text == "")){
+            if(!(usernameTextEditing.text == "" && passwordTextEditing.text == "")){
               await controller.login(
-                  emailTextEditing.text, passwordTextEditing.text);
+                  usernameTextEditing.text, passwordTextEditing.text);
             } else {
               controller.message.value = "Please fill username and password";
               controller.successfulLogin.value = false;

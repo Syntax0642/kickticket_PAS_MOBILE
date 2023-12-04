@@ -22,7 +22,7 @@ class ArleadyHaveAnAccount extends StatelessWidget{
         SizedBox(width: 5,),
         InkWell(
           onTap: (){
-            Get.offNamed('/login');
+            Get.offAllNamed('/login');
           },
           child: Text(
             "Sign In",

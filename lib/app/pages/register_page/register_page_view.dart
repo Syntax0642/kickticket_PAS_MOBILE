@@ -20,6 +20,7 @@ class regsiterPageView extends GetView<registerPageController> {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
+      backgroundColor: ColorTheme.greybg,
       body: SingleChildScrollView(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),

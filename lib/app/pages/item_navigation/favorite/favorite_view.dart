@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../common/theme/theme.dart';
+
 class FavDesign extends StatelessWidget {
   const FavDesign({Key? key}) : super(key: key);
 
@@ -8,7 +10,7 @@ class FavDesign extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: ColorTheme.greybg,
       body: Padding(
         padding: const EdgeInsets.fromLTRB(16.0, 90.0, 16.0, 16.0),
         child: Column(

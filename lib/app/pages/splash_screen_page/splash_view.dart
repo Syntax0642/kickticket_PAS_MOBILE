@@ -12,7 +12,7 @@ class splashScreenView extends GetView<splashController>{
     double height = MediaQuery.of(context).size.height;
     Get.put(splashController());
     return Scaffold(
-      backgroundColor: ColorTheme.white,
+      backgroundColor: ColorTheme.greybg,
       body: Center(
         child: Container(
           width: width,

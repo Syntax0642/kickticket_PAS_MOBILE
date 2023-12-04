@@ -10,6 +10,7 @@ class onBoardingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: ColorTheme.greybg,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(20),

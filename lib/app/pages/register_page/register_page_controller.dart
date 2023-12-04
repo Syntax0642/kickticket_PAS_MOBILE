@@ -49,6 +49,7 @@ class registerPageController extends GetxController{
         isLoading.value = false;
         this.message.value = message;
         ToastMessage.show(this.message.value);
+
         return;
       } else {
         successfulRegister.value = false;

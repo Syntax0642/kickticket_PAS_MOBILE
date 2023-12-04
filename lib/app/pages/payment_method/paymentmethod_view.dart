@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:kickticket/app/pages/payment/payment_controller.dart';
 import 'package:kickticket/app/pages/payment_method/widget/payment_method_list.dart';
 
+class PaymentMethodView extends GetView<PaymentController> {
+  final paymentController = Get.put(PaymentController());
+  PaymentMethodView({super.key});
 
-class PaymentMethodView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -9,7 +9,6 @@ class detailPageView extends GetView<detailPageController>{
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: ColorTheme.greybg,
@@ -19,18 +18,39 @@ class detailPageView extends GetView<detailPageController>{
           padding: EdgeInsets.only(top: 40, left: 20, right: 20, bottom: 10),
           child: Column(
             children: [
-              Container(
-                width: width,
-                height: 350,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  image: DecorationImage(
-                    image: AssetImage(
-                      "assets/images/stadiumbasket.png",
+              Stack(
+                children: [
+                  Container(
+                    width: width,
+                    height: 350,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      image: DecorationImage(
+                        image: AssetImage(
+                          "assets/images/stadiumbasket.png",
+                        ),
+                        fit: BoxFit.fill,
                     ),
-                    fit: BoxFit.fill,
-                ),
-                ),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: ()=> Get.toNamed('/ticket'),
+                    child: Container(
+                      width: 50,
+                      height: 50,
+                      decoration: BoxDecoration(
+                          color: ColorTheme.white,
+                          borderRadius: BorderRadius.circular(30),
+                          border: Border.all(width: 2, color: ColorTheme.black)
+                      ),
+                      child: Icon(
+                        Icons.arrow_back,
+                        color: ColorTheme.black,
+                        size: 15,
+                      ),
+                    ),
+                  ),
+                ],
               ),
               SizedBox(height: 25,),
               Container(
@@ -285,7 +305,9 @@ class detailPageView extends GetView<detailPageController>{
                             borderRadius: BorderRadius.circular(20),
                           ),
                         ),
-                        onPressed: (){},
+                        onPressed: (){
+                          Get.toNamed('/payment');
+                        },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [

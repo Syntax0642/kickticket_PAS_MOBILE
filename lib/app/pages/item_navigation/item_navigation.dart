@@ -32,15 +32,16 @@ class _NavigationExampleState extends State<NavigationExample> {
             label: 'Home',
           ),
           NavigationDestination(
-            icon: Badge(child: Icon(Icons.notifications_sharp)),
-            label: 'Notifications',
+            icon: Badge(child: Icon(Icons.star_border_outlined)),
+            selectedIcon: Icon(Icons.star),
+            label: 'Favorite',
           ),
           NavigationDestination(
             icon: Badge(
-              label: Text('2'),
-              child: Icon(Icons.messenger_sharp),
+              child: Icon(Icons.airplane_ticket_outlined),
             ),
-            label: 'Messages',
+            selectedIcon: Icon(Icons.airplane_ticket),
+            label: 'Ticket',
           ),
         ],
       ),

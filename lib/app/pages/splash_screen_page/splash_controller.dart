@@ -15,7 +15,7 @@ class splashController extends GetxController{
       if(prefs.getString('token') == null || prefs.getString('token') == ""){
         Get.offNamed('/register');
       }else{
-        Get.offNamed('/menu');
+        Get.offNamed('/onboard');
       }
     });
   }
