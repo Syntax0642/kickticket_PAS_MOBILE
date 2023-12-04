@@ -5,11 +5,14 @@ import 'package:kickticket/common/theme/theme.dart';
 import 'package:rive/rive.dart';
 
 class detailPageView extends GetView<detailPageController>{
+
+
   detailPageView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
+
+    print(controller.idEvent);
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: ColorTheme.greybg,
@@ -17,20 +20,41 @@ class detailPageView extends GetView<detailPageController>{
         scrollDirection: Axis.vertical,
         child: Padding(
           padding: EdgeInsets.only(top: 40, left: 20, right: 20, bottom: 10),
-          child: Column(
+          child: Obx(() => controller.isLoading.value?CircularProgressIndicator():Column(
             children: [
-              Container(
-                width: width,
-                height: 350,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  image: DecorationImage(
-                    image: AssetImage(
-                      "assets/images/stadiumbasket.png",
+              Stack(
+                children: [
+                  Container(
+                    width: width,
+                    height: 350,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      image: DecorationImage(
+                        image: NetworkImage(
+                          controller.data.value.images![0].url,
+                        ),
+                        fit: BoxFit.fill,
+                      ),
                     ),
-                    fit: BoxFit.fill,
-                ),
-                ),
+                  ),
+                  InkWell(
+                    onTap: ()=> Get.toNamed('/ticket'),
+                    child: Container(
+                      width: 50,
+                      height: 50,
+                      decoration: BoxDecoration(
+                          color: ColorTheme.white,
+                          borderRadius: BorderRadius.circular(30),
+                          border: Border.all(width: 2, color: ColorTheme.black)
+                      ),
+                      child: Icon(
+                        Icons.arrow_back,
+                        color: ColorTheme.black,
+                        size: 15,
+                      ),
+                    ),
+                  ),
+                ],
               ),
               SizedBox(height: 25,),
               Container(
@@ -57,15 +81,16 @@ class detailPageView extends GetView<detailPageController>{
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
-                            width: 280,
+                            width: 170,
                             child: Text(
-                                "BasketBall Match Golden Gate Vs Chicago Bulls",
-                                style: TextStyle(
+
+                              controller.data.value.name.toString(),
+                              style: TextStyle(
                                   fontFamily: "Poppins",
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
                                   color: ColorTheme.black
-                                ),
+                              ),
                               maxLines: 2,
                               softWrap: true,
                             ),
@@ -76,11 +101,11 @@ class detailPageView extends GetView<detailPageController>{
                                 children: [
                                   Icon(
                                       size: 13,
-                                    Icons.calendar_month
+                                      Icons.calendar_month
                                   ),
                                   SizedBox(width: 5,),
                                   Text(
-                                    "22 April 2023",
+                                   controller.formattingDate(controller.data.value.dates!.start.dateTime.toString()),
                                     style: TextStyle(
                                       color: ColorTheme.grey,
                                       fontFamily: "Poppins",
@@ -89,16 +114,16 @@ class detailPageView extends GetView<detailPageController>{
                                   )
                                 ],
                               ),
-                              SizedBox(width: 20,),
+                              SizedBox(width: 10,),
                               Row(
                                 children: [
                                   Icon(
-                                    size: 12,
-                                    Icons.location_on
+                                      size: 12,
+                                      Icons.location_on
                                   ),
                                   SizedBox(width: 5,),
                                   Text(
-                                    "Kudus,Indonesia",
+                                    controller.data.value.dates!.timezone.toString(),
                                     style: TextStyle(
                                       color: ColorTheme.grey,
                                       fontFamily: "Poppins",
@@ -117,14 +142,15 @@ class detailPageView extends GetView<detailPageController>{
                       width: 90,
                       height: 90,
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: ColorTheme.lightPurple
+                          borderRadius: BorderRadius.circular(20),
+                          color: ColorTheme.lightPurple
                       ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "\$15.00",
+
+                            "\$${controller.data.value.priceRanges![0].min.toString()}",
                             style: TextStyle(
                               color: ColorTheme.white,
                               fontFamily: "Poppins",
@@ -136,7 +162,8 @@ class detailPageView extends GetView<detailPageController>{
                           Column(
                             children: [
                               Text(
-                                "70 seats",
+
+                          "${controller.data.value.embedded!.venues![0].upcomingEvents.ticketmaster} seats",
                                 style: TextStyle(
                                   color: ColorTheme.white,
                                   fontFamily: "Poppins",
@@ -191,12 +218,14 @@ class detailPageView extends GetView<detailPageController>{
                     Container(
                       width: 300,
                       child: Text(
-                        "Pertandingan mendebarkan antara Golden Gate dan Chicago Bulls akan berlangsung di Arena Bola Basket Metropolitan pada 15 Februari 2023 pukul 19.00. Dua filosofi permainan yang berbeda akan bertabrakan dalam pertarungan epik ini. Golden Gate, dengan pendekatan taktis dan fokus tim, akan menghadapi Chicago Bulls yang dikenal karena semangat kompetitif dan kekuatan individual yang luar biasa.",
-                        style: TextStyle(
-                          fontFamily: "Poppins",
-                          fontSize: 17,
-                          fontWeight: FontWeight.w400,
-                          color: ColorTheme.black
+
+
+                        "\$${controller.data.value.embedded!.venues![0].generalInfo.childRule}",
+                       style: TextStyle(
+                            fontFamily: "Poppins",
+                            fontSize: 17,
+                            fontWeight: FontWeight.w400,
+                            color: ColorTheme.black
                         ),
                         maxLines: 5,
                         softWrap: true,
@@ -219,13 +248,13 @@ class detailPageView extends GetView<detailPageController>{
                           width: 50,
                           height: 50,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(40),
-                            image: DecorationImage(
-                              image: AssetImage(
-                                "assets/images/michie.jpeg"
-                              ),
-                              fit: BoxFit.cover
-                            )
+                              borderRadius: BorderRadius.circular(40),
+                              image: DecorationImage(
+                                  image: AssetImage(
+                                      "assets/images/michie.jpeg"
+                                  ),
+                                  fit: BoxFit.cover
+                              )
                           ),
                         ),
                         SizedBox(width: 10,),
@@ -251,21 +280,21 @@ class detailPageView extends GetView<detailPageController>{
                     SizedBox(height: 20,),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            width: 300,
-                            height: 200,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(25),
-                                image: DecorationImage(
-                                    image: AssetImage(
-                                        "assets/images/map.png"
-                                    ),
+                      children: [
+                        Container(
+                          width: 300,
+                          height: 200,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(25),
+                              image: DecorationImage(
+                                  image: AssetImage(
+                                      "assets/images/map.png"
+                                  ),
                                   fit: BoxFit.cover
-                                )
-                            ),
+                              )
                           ),
-                        ],
+                        ),
+                      ],
                     )
                   ],
                 ),
@@ -285,7 +314,9 @@ class detailPageView extends GetView<detailPageController>{
                             borderRadius: BorderRadius.circular(20),
                           ),
                         ),
-                        onPressed: (){},
+                        onPressed: (){
+                          Get.toNamed('/payment');
+                        },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -326,7 +357,7 @@ class detailPageView extends GetView<detailPageController>{
                 ],
               )
             ],
-          ),
+          ),)
         ),
       ),
     );

@@ -45,19 +45,20 @@ class _Bottom_Nav extends State<Bottom_Nav> {
             label: 'Home',
           ),
           NavigationDestination(
-            icon: Badge(child: Icon(Icons.notifications_sharp)),
+            icon: Badge(child: Icon(Icons.star_border)),
+            selectedIcon: Icon(Icons.star),
             label: 'Favorite',
           ),
           NavigationDestination(
-            selectedIcon: Icon(Icons.messenger),
-            icon: Icon(Icons.messenger_sharp),
+            selectedIcon: Icon(Icons.airplane_ticket),
+            icon: Icon(Icons.airplane_ticket_outlined),
             label: 'Ticket',
           ),
 
           NavigationDestination(
 
-            selectedIcon: Icon(Icons.messenger),
-            icon: Icon(Icons.messenger_sharp),
+            selectedIcon: Icon(Icons.people),
+            icon: Icon(Icons.people_alt_outlined),
             label: 'Profile',
           ),
         ],

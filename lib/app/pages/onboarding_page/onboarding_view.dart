@@ -10,6 +10,7 @@ class onBoardingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: ColorTheme.greybg,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(20),
@@ -94,7 +95,7 @@ class onBoardingView extends StatelessWidget {
                   () => ElevatedButton(
                     onPressed: () {
                       if (controller.isLastPage) {
-                        Get.offNamed(
+                        Get.offAllNamed(
                           '/register',
                         );
                       } else {

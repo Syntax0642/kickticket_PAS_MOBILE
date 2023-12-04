@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../common/theme/theme.dart';
+
 class TicketDesign extends StatelessWidget {
   const TicketDesign({Key? key}) : super(key: key);
 
@@ -8,20 +10,39 @@ class TicketDesign extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: ColorTheme.greybg,
       body: Padding(
         padding: const EdgeInsets.fromLTRB(16.0, 90.0, 16.0, 16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              'Your Order',
-              style: TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-                fontSize: 30.0,
-                decoration: TextDecoration.none,
-              ),
+            Row(
+              children: [
+                Container(
+                  width: 40,
+                  height: 40,
+                  decoration: BoxDecoration(
+                    color: ColorTheme.white,
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(width: 2, color: ColorTheme.black)
+                  ),
+                  child: Icon(
+                    Icons.arrow_back,
+                    color: ColorTheme.black,
+                    size: 15,
+                  ),
+                ),
+                SizedBox(width: 10,),
+                Text(
+                  'Your Order',
+                  style: TextStyle(
+                    color: Colors.red,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 60.0,
+                    decoration: TextDecoration.none,
+                  ),
+                ),
+              ],
             ),
             SizedBox(height: 25.0),
             Stack(

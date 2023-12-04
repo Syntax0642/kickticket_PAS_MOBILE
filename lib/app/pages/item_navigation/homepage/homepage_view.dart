@@ -1,48 +1,78 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kickticket/app/pages/login_page/login_page_controller.dart';
+import 'package:kickticket/app/pages/item_navigation/homepage/widget/text_time.dart';
+import '../../../../common/theme/theme.dart';
 import 'homepage_controller.dart';
-import 'widget/bottom_navigation_bar.dart';
-
+import 'list_home_card.dart';
 
 class homePageView extends GetView<homePageController> {
-
   homePageView({super.key});
+  final homePageController controller = Get.put(homePageController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xfff2f2f2),
+      backgroundColor: ColorTheme.greybg,
       body: SingleChildScrollView(
         child: Column(
           children: [
             Stack(
               children: [
                 Container(
+                  padding: EdgeInsets.only(left: 25, right: 25, bottom: 25, top: 60),
                     width: MediaQuery.of(context).size.width,
                     height: 270,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(40),
                         color: Color(0xff9d76c1)),
-                    alignment: Alignment.centerLeft,
-                    child: Container(
-                      margin: EdgeInsets.symmetric(horizontal: 30),
-                      padding: EdgeInsets.only(top: 60),
-                      width: double.infinity,
-                      child: Text("Hello, Ayika.",
-                          style: TextStyle(
-                              fontFamily: "Poppins",
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Obx(
+                        ()=> Text(
+                              "Hello ${controller.username.value} 👋",
+                            style: TextStyle(
+                              color: ColorTheme.white,
+                              fontSize: 25,
                               fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                              fontSize: 23)),
-                    )),
-                Image.asset("assets/images/gelombang.png")
+                              fontFamily: "Poppins"
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 20,),
+                        TextTimes(context),
+                        SizedBox(height: 20,),
+                        Container(
+                          padding: EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                            color: ColorTheme.white,
+                            borderRadius: BorderRadius.circular(20),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.5), // Adjust color and opacity as needed
+                                spreadRadius: 5,
+                                blurRadius: 7,
+                                offset: Offset(0, 3), // Changes the position of the shadow
+                              ),
+                            ],
+                          ),
+                          child: TextFormField(
+                            decoration: InputDecoration(
+
+                              border: InputBorder.none,
+                              hintText: "Search your favorite team...",
+                              prefixIcon: Icon(Icons.search),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                ),
               ],
             ),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
               child: Column(
-
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text("Up coming Events",
@@ -53,263 +83,283 @@ class homePageView extends GetView<homePageController> {
                   SizedBox(
                     height: 20,
                   ),
-
                   SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: [
-
-                        Container(
-                          padding: EdgeInsets.all(15),
-                          decoration: BoxDecoration(
-                              color: Color(0xffd9d9d9),
-                              borderRadius: BorderRadius.circular(40)
-
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(20),
-                                child:   Image.asset(
-                                  "assets/images/basket.png",
-                                  height: 125,
-                                  width: 125,
-                                  fit: BoxFit.cover,
-                                ),),
-                              SizedBox(width: 10,),
-                              Container(
-                                // height: 120,
-                                // color: Colors.black,
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "17 April, 2022",
-                                      style: TextStyle(
-                                        fontFamily: "Poppins-regular",
-                                      ),
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          InkWell(
+                            onTap: ()=> Get.toNamed('/events'),
+                            child: Container(
+                              padding: EdgeInsets.all(15),
+                              decoration: BoxDecoration(
+                                  color: Color(0xffd9d9d9),
+                                  borderRadius: BorderRadius.circular(40)),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(20),
+                                    child: Image.asset(
+                                      "assets/images/stadiumbasket.png",
+                                      height: 125,
+                                      width: 125,
+                                      fit: BoxFit.cover,
                                     ),
-                                    Container(
-                                      width: 190,
-                                      child:      Text("Judul nya adalah ini 2022.",
-                                          style: TextStyle(
-                                              fontFamily: "Poppins",
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 18)),
-                                    ),
-                                    SizedBox(height: 20,),
-
-                                    Row(
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Container(
+                                    // height: 120,
+                                    // color: Colors.black,
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
-                                        Icon(Icons.location_on_outlined),
                                         Text(
-                                          "Kudus, Indonesia",
+                                          "17 April, 2022",
                                           style: TextStyle(
                                             fontFamily: "Poppins-regular",
                                           ),
                                         ),
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                        SizedBox(width: 15,),
-                        Container(
-                          padding: EdgeInsets.all(15),
-                          decoration: BoxDecoration(
-                              color: Color(0xffd9d9d9),
-                              borderRadius: BorderRadius.circular(40)
-
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(20),
-                                child:   Image.asset(
-                                  "assets/images/basket.png",
-                                  height: 125,
-                                  width: 125,
-                                  fit: BoxFit.cover,
-                                ),),
-                              SizedBox(width: 10,),
-                              Container(
-                                // height: 120,
-                                // color: Colors.black,
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "17 April, 2022",
-                                      style: TextStyle(
-                                        fontFamily: "Poppins-regular",
-                                      ),
-                                    ),
-                                    Container(
-                                      width: 190,
-                                      child:      Text("Judul nya adalah ini 2022.",
-                                          style: TextStyle(
-                                              fontFamily: "Poppins",
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 18)),
-                                    ),
-                                    SizedBox(height: 20,),
-
-                                    Row(
-                                      children: [
-                                        Icon(Icons.location_on_outlined),
-                                        Text(
-                                          "Kudus, Indonesia",
-                                          style: TextStyle(
-                                            fontFamily: "Poppins-regular",
-                                          ),
+                                        Container(
+                                          width: 190,
+                                          child: Text(
+                                              "BasketBall Match Golden Gate Vs Chicago Bulls",
+                                              style: TextStyle(
+                                                  fontFamily: "Poppins",
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 18)),
                                         ),
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                        SizedBox(width: 15,),
-                        Container(
-                          padding: EdgeInsets.all(15),
-                          decoration: BoxDecoration(
-                              color: Color(0xffd9d9d9),
-                              borderRadius: BorderRadius.circular(40)
-
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(20),
-                                child:   Image.asset(
-                                  "assets/images/basket.png",
-                                  height: 125,
-                                  width: 125,
-                                  fit: BoxFit.cover,
-                                ),),
-                              SizedBox(width: 10,),
-                              Container(
-                                // height: 120,
-                                // color: Colors.black,
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "17 April, 2022",
-                                      style: TextStyle(
-                                        fontFamily: "Poppins-regular",
-                                      ),
-                                    ),
-                                    Container(
-                                      width: 190,
-                                      child:      Text("Judul nya adalah ini 2022.",
-                                          style: TextStyle(
-                                              fontFamily: "Poppins",
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 18)),
-                                    ),
-                                    SizedBox(height: 20,),
-
-                                    Row(
-                                      children: [
-                                        Icon(Icons.location_on_outlined),
-                                        Text(
-                                          "Kudus, Indonesia",
-                                          style: TextStyle(
-                                            fontFamily: "Poppins-regular",
-                                          ),
+                                        SizedBox(
+                                          height: 20,
                                         ),
+                                        Row(
+                                          children: [
+                                            Icon(Icons.location_on_outlined),
+                                            Text(
+                                              "Kudus, Indonesia",
+                                              style: TextStyle(
+                                                fontFamily: "Poppins-regular",
+                                              ),
+                                            ),
+                                          ],
+                                        )
                                       ],
-                                    )
-                                  ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 15,
+                          ),
+                          Container(
+                            padding: EdgeInsets.all(15),
+                            decoration: BoxDecoration(
+                                color: Color(0xffd9d9d9),
+                                borderRadius: BorderRadius.circular(40)),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(20),
+                                  child: Image.asset(
+                                    "assets/images/basket.png",
+                                    height: 125,
+                                    width: 125,
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
-                              )
-                            ],
-                          ),
-                        ),
-                        SizedBox(width: 15,),
-                        Container(
-                          padding: EdgeInsets.all(15),
-                          decoration: BoxDecoration(
-                              color: Color(0xffd9d9d9),
-                              borderRadius: BorderRadius.circular(40)
-
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(20),
-                                child:   Image.asset(
-                                  "assets/images/basket.png",
-                                  height: 125,
-                                  width: 125,
-                                  fit: BoxFit.cover,
-                                ),),
-                              SizedBox(width: 10,),
-                              Container(
-                                // height: 120,
-                                // color: Colors.black,
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "17 April, 2022",
-                                      style: TextStyle(
-                                        fontFamily: "Poppins-regular",
-                                      ),
-                                    ),
-                                    Container(
-                                      width: 190,
-                                      child:      Text("Judul nya adalah ini 2022.",
-                                          style: TextStyle(
-                                              fontFamily: "Poppins",
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 18)),
-                                    ),
-                                    SizedBox(height: 20,),
-
-                                    Row(
-                                      children: [
-                                        Icon(Icons.location_on_outlined),
-                                        Text(
-                                          "Kudus, Indonesia",
-                                          style: TextStyle(
-                                            fontFamily: "Poppins-regular",
-                                          ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Container(
+                                  // height: 120,
+                                  // color: Colors.black,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "17 April, 2022",
+                                        style: TextStyle(
+                                          fontFamily: "Poppins-regular",
                                         ),
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              )
-                            ],
+                                      ),
+                                      Container(
+                                        width: 190,
+                                        child: Text(
+                                            "BasketBall Match Golden Gate Vs Chicago Bulls",
+                                            style: TextStyle(
+                                                fontFamily: "Poppins",
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 18)),
+                                      ),
+                                      SizedBox(
+                                        height: 20,
+                                      ),
+                                      Row(
+                                        children: [
+                                          Icon(Icons.location_on_outlined),
+                                          Text(
+                                            "Kudus, Indonesia",
+                                            style: TextStyle(
+                                              fontFamily: "Poppins-regular",
+                                            ),
+                                          ),
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
-                    )
-                  ),
-
+                          SizedBox(
+                            width: 15,
+                          ),
+                          Container(
+                            padding: EdgeInsets.all(15),
+                            decoration: BoxDecoration(
+                                color: Color(0xffd9d9d9),
+                                borderRadius: BorderRadius.circular(40)),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(20),
+                                  child: Image.asset(
+                                    "assets/images/basket.png",
+                                    height: 125,
+                                    width: 125,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Container(
+                                  // height: 120,
+                                  // color: Colors.black,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "17 April, 2022",
+                                        style: TextStyle(
+                                          fontFamily: "Poppins-regular",
+                                        ),
+                                      ),
+                                      Container(
+                                        width: 190,
+                                        child: Text(
+                                            "BasketBall Match Golden Gate Vs Chicago Bulls",
+                                            style: TextStyle(
+                                                fontFamily: "Poppins",
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 18)),
+                                      ),
+                                      SizedBox(
+                                        height: 20,
+                                      ),
+                                      Row(
+                                        children: [
+                                          Icon(Icons.location_on_outlined),
+                                          Text(
+                                            "Kudus, Indonesia",
+                                            style: TextStyle(
+                                              fontFamily: "Poppins-regular",
+                                            ),
+                                          ),
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            width: 15,
+                          ),
+                          Container(
+                            padding: EdgeInsets.all(15),
+                            decoration: BoxDecoration(
+                                color: Color(0xffd9d9d9),
+                                borderRadius: BorderRadius.circular(40)),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(20),
+                                  child: Image.asset(
+                                    "assets/images/basket.png",
+                                    height: 125,
+                                    width: 125,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Container(
+                                  // height: 120,
+                                  // color: Colors.black,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "17 April, 2022",
+                                        style: TextStyle(
+                                          fontFamily: "Poppins-regular",
+                                        ),
+                                      ),
+                                      Container(
+                                        width: 190,
+                                        child: Text(
+                                            "BasketBall Match Golden Gate Vs Chicago Bulls",
+                                            style: TextStyle(
+                                                fontFamily: "Poppins",
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 18)),
+                                      ),
+                                      SizedBox(
+                                        height: 20,
+                                      ),
+                                      Row(
+                                        children: [
+                                          Icon(Icons.location_on_outlined),
+                                          Text(
+                                            "Kudus, Indonesia",
+                                            style: TextStyle(
+                                              fontFamily: "Poppins-regular",
+                                            ),
+                                          ),
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ],
+                      )),
                   SizedBox(
                     height: 20,
                   ),
-
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -318,34 +368,37 @@ class homePageView extends GetView<homePageController> {
                               fontFamily: "Poppins",
                               fontWeight: FontWeight.bold,
                               fontSize: 23)),
-                      Text(
-                        "View All",
-                        style: TextStyle(
-                          decoration: TextDecoration.underline,
-                          fontFamily: "Poppins",
+                      InkWell(
+                        onTap: ()=> Get.toNamed('/ticket'),
+                        child: Text(
+                          "View All",
+                          style: TextStyle(
+                            decoration: TextDecoration.underline,
+                            fontFamily: "Poppins",
+                          ),
                         ),
                       ),
                     ],
                   ),
-
                   SizedBox(
                     height: 20,
                   ),
-
                   Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
-                          padding: EdgeInsets.symmetric(vertical: 15,horizontal: 20),
+                          padding: EdgeInsets.symmetric(
+                              vertical: 15, horizontal: 20),
                           decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(30)
-                          ),
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(30)),
                           child: Row(
                             children: [
                               Image.asset("assets/images/category.png"),
-                              SizedBox(width: 10,),
-                              Text("Kategori 1",
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Text("BasketBall",
                                   style: TextStyle(
                                       fontFamily: "Poppins",
                                       fontWeight: FontWeight.bold,
@@ -356,19 +409,19 @@ class homePageView extends GetView<homePageController> {
                         SizedBox(
                           width: 10,
                         ),
-
-
                         Container(
-                          padding: EdgeInsets.symmetric(vertical: 15,horizontal: 20),
+                          padding: EdgeInsets.symmetric(
+                              vertical: 15, horizontal: 20),
                           decoration: BoxDecoration(
                               color: Colors.white,
-                              borderRadius: BorderRadius.circular(30)
-                          ),
+                              borderRadius: BorderRadius.circular(30)),
                           child: Row(
                             children: [
                               Image.asset("assets/images/category.png"),
-                              SizedBox(width: 10,),
-                              Text("Kategori 2",
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Text("FootBall",
                                   style: TextStyle(
                                       fontFamily: "Poppins",
                                       fontWeight: FontWeight.bold,
@@ -376,77 +429,9 @@ class homePageView extends GetView<homePageController> {
                             ],
                           ),
                         ),
-
-
                       ]),
-                  SizedBox(height: 25.0),
-                  InkWell(
-                    onTap: () {
-                      Get.toNamed("/detail");
-                    },
-                    child: Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(30.0),
-                          child: Image.asset(
-                            "assets/images/basket.png",
-                            width: 500.0,
-                            height: 200.0,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        Positioned(
-                          bottom: 0,
-                          child: Container(
 
-                            margin: EdgeInsets.symmetric(horizontal: 20,vertical: 10),
-                            width: 400.0,
-
-                            height: 100.0,
-                            decoration: BoxDecoration(
-                                color: Colors.white.withOpacity(0.5),
-                                borderRadius: BorderRadius.circular(200)
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(16.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    children: [
-                                      Text(
-                                        'View your order details',
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 16.0,
-                                        ),
-                                      ),
-                                      SizedBox(width: 8.0),
-                                      Icon(
-                                        Icons.arrow_forward,
-                                        color: Colors.black,
-                                        size: 20.0,
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(height: 8.0),
-                                  Text(
-                                    'BasketBall Nice!',
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20.0,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  Obx(() => controller.isLoading.value?CircularProgressIndicator():ListHomeCard())
                 ],
               ),
             )
@@ -456,4 +441,3 @@ class homePageView extends GetView<homePageController> {
     );
   }
 }
-
