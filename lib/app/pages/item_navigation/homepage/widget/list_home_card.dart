@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'homepage_controller.dart';
+import '../homepage_controller.dart';
 
 class ListHomeCard extends StatelessWidget {
 
@@ -12,6 +12,8 @@ class ListHomeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return   ListView.builder(
+      shrinkWrap: true,
+      physics: NeverScrollableScrollPhysics(),
       itemBuilder: (BuildContext context, int index) {
         return  InkWell(
 
@@ -86,8 +88,6 @@ class ListHomeCard extends StatelessWidget {
           ),
         );
       },
-      physics: NeverScrollableScrollPhysics(),
-      shrinkWrap: true,
       itemCount: controller.isLoading.value
           ? 10
           : controller.data.value.embedded!.events.length,

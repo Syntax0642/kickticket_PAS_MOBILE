@@ -5,6 +5,8 @@ import 'package:http/http.dart' as http;
 import 'package:kickticket/app/models/sport_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'package:intl/intl.dart';
+
 class homePageController extends GetxController {
   Rx<SportsModel> data = SportsModel().obs;
   late final SharedPreferences prefs;
@@ -37,16 +39,16 @@ class homePageController extends GetxController {
     }
     isLoading.value = false;
   }
-  //
-  // String formattingDate(String date) {
-  //   try {
-  //     DateTime originalDate = DateTime.parse(date);
-  //     String formattedDate = DateFormat('dd MMM yyyy').format(originalDate);
-  //     return formattedDate; // Output: 18-11-2023
-  //   } catch (e) {
-  //     return "Invalid date format";
-  //   }
-  // }
+
+  String formattingDate(String date) {
+    try {
+      DateTime originalDate = DateTime.parse(date);
+      String formattedDate = DateFormat('dd MMM yyyy').format(originalDate);
+      return formattedDate; // Output: 18-11-2023
+    } catch (e) {
+      return "Invalid date format";
+    }
+  }
   //
   // String formattingTime(String time) {
   //   try {
