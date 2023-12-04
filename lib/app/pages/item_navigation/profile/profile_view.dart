@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kickticket/app/pages/item_navigation/profile/profile_controller.dart';
-import 'package:kickticket/app/pages/profile/widget/avatar.dart';
-import 'package:kickticket/app/pages/profile/widget/profile_model.dart';
+import 'package:kickticket/app/pages/item_navigation/profile/widget/avatar.dart';
+import 'package:kickticket/app/pages/item_navigation/profile/widget/profile_model.dart';
+import '../../../../common/theme/theme.dart';
+import '../../profile/profile_controller.dart';
 
 
 class ProfileScreen extends GetView<ProfileController> {
-   ProfileScreen({super.key});
-   ProfileController controller = Get.put(ProfileController());
+  ProfileScreen({super.key});
+  ProfileController controller = Get.put(ProfileController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: ColorTheme.greybg,
       appBar: AppBar(
         title: Text(
           "Profile",
@@ -44,7 +46,7 @@ class ProfileScreen extends GetView<ProfileController> {
             ),
             ProfileMenu(
               text: "Log Out",
-              press: ()  async{controller.signout();},
+              press: ()=> controller.signout(),
             ),
           ],
         ),

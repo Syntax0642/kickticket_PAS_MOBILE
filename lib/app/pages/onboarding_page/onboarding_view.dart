@@ -10,6 +10,7 @@ class onBoardingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: ColorTheme.greybg,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(20),
@@ -90,23 +91,23 @@ class onBoardingView extends StatelessWidget {
                     child: Text('Skip'),
                   ),
                 ),
-               Obx(() =>
-                   ElevatedButton(
-                     onPressed: () {
-                       if (controller.isLastPage) {
-                         Get.offNamed(
-                           '/register',
-                         );
-                       } else {
-                         controller.pageController.nextPage(
-                           duration: Duration(milliseconds: 500),
-                           curve: Curves.ease,
-                         );
-                       }
-                     },
-                     child: Text(controller.isLastPage ? 'Done' : 'Next'),
-                   ),
-               )
+                Obx(
+                  () => ElevatedButton(
+                    onPressed: () {
+                      if (controller.isLastPage) {
+                        Get.offAllNamed(
+                          '/register',
+                        );
+                      } else {
+                        controller.pageController.nextPage(
+                          duration: Duration(milliseconds: 500),
+                          curve: Curves.ease,
+                        );
+                      }
+                    },
+                    child: Text(controller.isLastPage ? 'Done' : 'Next'),
+                  ),
+                )
               ])
             ],
           ),

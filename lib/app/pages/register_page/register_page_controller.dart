@@ -19,23 +19,27 @@ class registerPageController extends GetxController{
   RxString message = "".obs;
 
   signin(String username, String email, String password) async {
-    isLoading.value = true;
-    final response = await http.post(
-      Uri.parse("https://mediadwi.com/api/latihan/register-user"),
-      headers:{
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: {
-        'username': "adaffaaa",
-        'email': "aaaaaa@gmail.com",
-        'password': "a2aa13123",
-      },
-    );
-
-    print(response.body);
     print(username);
     print(email);
     print(password);
+    isLoading.value = true;
+    final response = await http.post(
+      Uri.parse("https://mediadwi.com/api/latihan/register-user"),
+      headers: <String, String>{
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: <String, String>{
+        'username': username,
+        'full_name': username,
+        'email': email,
+        'password': password,
+      },
+    );
+
+
+
+    print(response.body);
+
     if (response.statusCode == 200) {
       Map<String, dynamic> jsonResponse = json.decode(response.body);
       bool status = jsonResponse['status'];
@@ -45,6 +49,7 @@ class registerPageController extends GetxController{
         isLoading.value = false;
         this.message.value = message;
         ToastMessage.show(this.message.value);
+
         return;
       } else {
         successfulRegister.value = false;

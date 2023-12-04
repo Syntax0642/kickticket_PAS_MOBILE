@@ -40,6 +40,7 @@ dependencies:
   shared_preferences:
   flutter_svg:
   lottie:
+  intl:
   smooth_page_indicator:
   rive:
   fluttertoast:
@@ -97,6 +98,11 @@ flutter:
            - asset: assets/fonts/Poppins/Poppins-Bold.otf
            - asset: assets/fonts/Poppins/Poppins-Medium.otf
              weight: 400
+
+       - family: Poppins-regular
+         fonts:
+           - asset: assets/fonts/Poppins/Poppins-Regular.otf
+
 
 
   #

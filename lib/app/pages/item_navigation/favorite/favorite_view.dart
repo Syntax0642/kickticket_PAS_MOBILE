@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../../../common/theme/theme.dart';
+import '../../../../common/theme/theme.dart';
 
-class TicketDesign extends StatelessWidget {
-  const TicketDesign({Key? key}) : super(key: key);
+class FavDesign extends StatelessWidget {
+  const FavDesign({Key? key}) : super(key: key);
 
-  final String imagePath = 'assets/basket.jpeg';
+  final String imagePath = 'assets/images/basket.png';
 
   @override
   Widget build(BuildContext context) {
@@ -16,33 +16,24 @@ class TicketDesign extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                Container(
-                  width: 40,
-                  height: 40,
-                  decoration: BoxDecoration(
-                    color: ColorTheme.white,
-                    borderRadius: BorderRadius.circular(20),
-                    border: Border.all(width: 2, color: ColorTheme.black)
-                  ),
-                  child: Icon(
-                    Icons.arrow_back,
-                    color: ColorTheme.black,
-                    size: 15,
-                  ),
+            Text(
+              'Favorite',
+              style: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+                fontSize: 30.0,
+                decoration: TextDecoration.none,
+              ),
+            ),
+            SizedBox(height: 16.0),
+            TextField(
+              decoration: InputDecoration(
+                hintText: 'Favorite...',
+                prefixIcon: Icon(Icons.search),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30.0),
                 ),
-                SizedBox(width: 10,),
-                Text(
-                  'Your Order',
-                  style: TextStyle(
-                    color: Colors.red,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 60.0,
-                    decoration: TextDecoration.none,
-                  ),
-                ),
-              ],
+              ),
             ),
             SizedBox(height: 25.0),
             Stack(
@@ -58,9 +49,25 @@ class TicketDesign extends StatelessWidget {
                   ),
                 ),
                 Positioned(
+                  top: 0,
+                  right: 0,
+                  child: Container(
+                    padding: EdgeInsets.all(8.0),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(50.0),
+                    ),
+                    child: Icon(
+                      Icons.favorite,
+                      color: Colors.red,
+                      size: 20.0,
+                    ),
+                  ),
+                ),
+                Positioned(
                   bottom: 0,
                   child: Container(
-                    width: 400.0,
+                    width: 350.0,
                     height: 100.0,
                     decoration: BoxDecoration(
                       color: Colors.white.withOpacity(0.5),
@@ -79,7 +86,7 @@ class TicketDesign extends StatelessWidget {
                           Row(
                             children: [
                               Text(
-                                'View your order details',
+                                '17 April, 2022',
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontSize: 16.0,
@@ -123,68 +130,19 @@ class TicketDesign extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  bottom: 0,
+                  top: 0,
+                  right: 0,
                   child: Container(
-                    width: 350.0,
-                    height: 100.0,
+                    padding: EdgeInsets.all(8.0),
                     decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.5),
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(30.0),
-                        topRight: Radius.circular(30.0),
-                        bottomLeft: Radius.circular(30.0),
-                        bottomRight: Radius.circular(30.0),
-                      ),
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(50.0),
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              Text(
-                                'View your order details',
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 16.0,
-                                ),
-                              ),
-                              SizedBox(width: 8.0),
-                              Icon(
-                                Icons.arrow_forward,
-                                color: Colors.black,
-                                size: 20.0,
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 8.0),
-                          Text(
-                            'BasketBall Nice!',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20.0,
-                            ),
-                          ),
-                        ],
-                      ),
+                    child: Icon(
+                      Icons.favorite,
+                      color: Colors.red,
+                      size: 20.0,
                     ),
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(height: 16.0),
-            Stack(
-              alignment: Alignment.center,
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(30.0),
-                  child: Image.asset(
-                    imagePath,
-                    width: 500.0,
-                    height: 200.0,
-                    fit: BoxFit.cover,
                   ),
                 ),
                 Positioned(
@@ -209,7 +167,7 @@ class TicketDesign extends StatelessWidget {
                           Row(
                             children: [
                               Text(
-                                'View your order details',
+                                '17 April, 2022',
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontSize: 16.0,

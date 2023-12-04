@@ -18,6 +18,7 @@ class loginPageView extends GetView<loginPageController>{
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
+      backgroundColor: ColorTheme.greybg,
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: SingleChildScrollView(
@@ -102,7 +103,7 @@ class loginPageView extends GetView<loginPageController>{
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          loginTextField(textEditingController: controller.emailTextEditingController, hintText: "insert your email", icon: Icons.email, labelText: "Email", isPass: false),
+                          loginTextField(textEditingController: controller.usernameTextEditingController, hintText: "insert your username", icon: Icons.people, labelText: "Username", isPass: false),
                           SizedBox(height: size.height*0.03,),
                           loginTextField(textEditingController: controller.passwordTextEditingController, hintText: "insert your password", icon: Icons.lock, labelText: "Password", isPass: true),
                           Obx(
@@ -141,8 +142,8 @@ class loginPageView extends GetView<loginPageController>{
                             ),
                           ),
                         ):logInButton(
-                              emailTextEditing:
-                              controller.emailTextEditingController,
+                              usernameTextEditing:
+                              controller.usernameTextEditingController,
                               passwordTextEditing:
                               controller.passwordTextEditingController,
                               formKey: formKey,

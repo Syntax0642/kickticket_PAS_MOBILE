@@ -1,16 +1,22 @@
 import 'package:get/get.dart';
+import 'package:kickticket/app/pages/detail_page/detail_page_binding.dart';
+import 'package:kickticket/app/pages/detail_page/detail_page_view.dart';
 import 'package:kickticket/app/pages/item_navigation/homepage/homepage_binding.dart';
-import 'package:kickticket/app/pages/item_navigation/item_navigation.dart';
+import 'package:kickticket/app/pages/item_navigation/homepage/homepage_view.dart';
+import 'package:kickticket/app/pages/item_navigation/item_nvatigation.dart';
+import 'package:kickticket/app/pages/item_navigation/ticket_all/ticket_binding.dart';
+import 'package:kickticket/app/pages/item_navigation/ticket_all/ticket_view.dart';
 import 'package:kickticket/app/pages/login_page/login_page_binding.dart';
 import 'package:kickticket/app/pages/onboarding_page/onboarding_binding.dart';
 import 'package:kickticket/app/pages/onboarding_page/onboarding_view.dart';
+import 'package:kickticket/app/pages/payment/payment_binding.dart';
+import 'package:kickticket/app/pages/payment/payment_view.dart';
 import 'package:kickticket/app/pages/register_page/register_page_binding.dart';
 import 'package:kickticket/app/pages/register_page/register_page_view.dart';
 import 'package:kickticket/app/pages/login_page/login_page_view.dart';
 import 'package:kickticket/app/pages/splash_screen_page/splash_binding.dart';
 import 'package:kickticket/app/pages/splash_screen_page/splash_view.dart';
 
-import '../../app/pages/item_navigation/homepage/homepage_view.dart';
 
 List<GetPage> routes = [
   GetPage(
@@ -37,8 +43,23 @@ List<GetPage> routes = [
     binding: homePageBinding(),
   ),
   GetPage(
-    name: '/a',
-    page:() =>  NavigationExample(),
-    // binding: homePageBinding(),
+    name: '/menu',
+    page:() =>  Bottom_Nav(),
+  ),
+
+  GetPage(
+    name: '/detail',
+    page:() =>  detailPageView(),
+    binding: detailPageBinding(),
+  ),
+  GetPage(
+    name: '/payment',
+    page:() =>  PaymentDesign(),
+    binding: PaymentBinding(),
+  ),
+  GetPage(
+    name: '/ticket',
+    page:() =>  TicketDesign(),
+    binding: TicketBinding(),
   ),
 ];
