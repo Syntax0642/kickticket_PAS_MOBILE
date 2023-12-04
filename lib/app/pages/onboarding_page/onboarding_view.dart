@@ -90,23 +90,23 @@ class onBoardingView extends StatelessWidget {
                     child: Text('Skip'),
                   ),
                 ),
-               Obx(() =>
-                   ElevatedButton(
-                     onPressed: () {
-                       if (controller.isLastPage) {
-                         Get.offNamed(
-                           '/register',
-                         );
-                       } else {
-                         controller.pageController.nextPage(
-                           duration: Duration(milliseconds: 500),
-                           curve: Curves.ease,
-                         );
-                       }
-                     },
-                     child: Text(controller.isLastPage ? 'Done' : 'Next'),
-                   ),
-               )
+                Obx(
+                  () => ElevatedButton(
+                    onPressed: () {
+                      if (controller.isLastPage) {
+                        Get.offNamed(
+                          '/register',
+                        );
+                      } else {
+                        controller.pageController.nextPage(
+                          duration: Duration(milliseconds: 500),
+                          curve: Curves.ease,
+                        );
+                      }
+                    },
+                    child: Text(controller.isLastPage ? 'Done' : 'Next'),
+                  ),
+                )
               ])
             ],
           ),
