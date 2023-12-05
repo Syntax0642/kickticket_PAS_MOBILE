@@ -65,7 +65,7 @@ class PaymentDesign extends StatelessWidget {
                   ),
                   TextButton(
                     onPressed: () {
-                      Get.toNamed("/payment_method");
+                      Get.toNamed("/payment_method",arguments: {"index":0});
                     },
                     child: Text(
                       'Change Payment',
@@ -161,10 +161,9 @@ class PaymentDesign extends StatelessWidget {
                       margin: const EdgeInsets.all(5),
                       child: ElevatedButton(
                         onPressed: () {
-                          if(controller.data.value != []){
-                            controller.data.value.removeAt(paymentController.indexEvent!.value);
-                            Get.offAllNamed('menu');
-                          }
+                          controller.data.value.where((x) =>controller.data.value.indexOf(x) != 0).toList();
+                          Get.offAllNamed('menu');
+
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: ColorTheme.heavyPurple,

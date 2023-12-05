@@ -17,6 +17,7 @@ class CheckoutList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print( controller.data.value.length);
     return   controller.data.value.isEmpty? Center(child: Lottie.asset("assets/lottie/not_found.json"),):  ListView.builder(
       shrinkWrap: true,
       physics: NeverScrollableScrollPhysics(),

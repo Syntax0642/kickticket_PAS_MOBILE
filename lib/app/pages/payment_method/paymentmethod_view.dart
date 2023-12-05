@@ -253,7 +253,6 @@ class _PaymentMethodViewState extends State<PaymentMethodView> {
              ),
 
 
-             Text(language!),
 
            ],
          ),
