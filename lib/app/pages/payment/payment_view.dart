@@ -1,11 +1,18 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kickticket/app/pages/payment/payment_controller.dart';
 import 'package:kickticket/app/pages/payment/payment_model.dart';
+import 'package:kickticket/common/theme/theme.dart';
+import 'package:lottie/lottie.dart';
+
+import '../item_navigation/ticket_all/ticket_controller.dart';
 
 class PaymentDesign extends StatelessWidget {
   final PaymentController paymentController = Get.put(PaymentController());
 
+  final TicketController controller = Get.put(TicketController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,37 +41,17 @@ class PaymentDesign extends StatelessWidget {
               ),
               SizedBox(height: 20.0),
               Paystyle(
+                isReadOnly: false,
                 label: 'Customer Name',
                 onChanged: (value) => paymentController.customerName.value = value,
               ),
               Paystyle(
+                isReadOnly: false,
                 label: 'Number of Tickets',
                 onChanged: (value) => paymentController.numberOfTickets.value = value,
                 keyboardType: TextInputType.number,
               ),
-              Paystyle(
-                label: 'Email',
-                onChanged: (value) => paymentController.email.value = value,
-              ),
-              Row(
-                children: [
-                  Expanded(
-                    child: Paystyle(
-                      label: 'Date and time',
-                      keyboardType: TextInputType.number,
-                      onChanged: (value) => paymentController.expirationDate.value = value,
-                    ),
-                  ),
-                  SizedBox(width: 16.0),
-                  Expanded(
-                    child: Paystyle(
-                      label: 'Booking hours',
-                      keyboardType: TextInputType.number,
-                      onChanged: (value) => paymentController.cvv.value = value,
-                    ),
-                  ),
-                ],
-              ),
+
               SizedBox(height: 05.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -78,6 +65,7 @@ class PaymentDesign extends StatelessWidget {
                   ),
                   TextButton(
                     onPressed: () {
+                      Get.toNamed("/payment_method");
                     },
                     child: Text(
                       'Change Payment',
@@ -89,14 +77,31 @@ class PaymentDesign extends StatelessWidget {
                   ),
                 ],
               ),
-              Paystyle(
-                label: 'Select payment',
-                onChanged: (value) => paymentController.customerName.value = value,
+          
+          // Obx(() => Text( paymentController.paymentMethod.value)),
+
+          Padding(
+            padding: const EdgeInsets.only(bottom: 16.0),
+            child: Obx(
+              () => TextFormField(
+                controller:paymentController.getPayment(),
+                // initialValue: paymentController.paymentMethod.value,
+                readOnly: true,
+                decoration: InputDecoration(
+                  labelText: 'Select payment',
+                  filled: true,
+                  fillColor: Colors.white70,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12.0), // Radius border
+                  ),
+                ),
               ),
+            ),
+          ),
               SizedBox(height: 20.0),
               ElevatedButton(
                 onPressed: () {
-                  // Placeholder for processing payment
+                  showCheckoutConfirmationDialog(context);
                 },
                 style: ElevatedButton.styleFrom(
                   primary: Colors.deepPurpleAccent,
@@ -113,10 +118,77 @@ class PaymentDesign extends StatelessWidget {
                   ),
                 ),
               ),
+
             ],
           ),
         ),
       ),
     );
   }
+
+  void showCheckoutConfirmationDialog(BuildContext context) {
+    Get.dialog(
+      barrierDismissible: false,
+      Dialog(
+        child: Container(
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Colors.white,
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Lottie.asset(
+                'assets/lottie/confirm.json',
+                width: 300,
+                height: 300,
+                fit: BoxFit.fill,
+              ),
+              Text(
+                "Your Order has been confirmed!",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black
+                ),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 16),
+              Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      margin: const EdgeInsets.all(5),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          if(controller.data.value != []){
+                            controller.data.value.removeAt(paymentController.indexEvent!.value);
+                            Get.offAllNamed('menu');
+                          }
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: ColorTheme.heavyPurple,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                        child: Container(
+                          margin: const EdgeInsets.symmetric(vertical: 7),
+                          child: Text(
+                            'Continue Shopping',
+                            style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
 }

@@ -4,8 +4,15 @@ import 'package:kickticket/app/pages/detail_page/detail_page_controller.dart';
 import 'package:kickticket/common/theme/theme.dart';
 import 'package:rive/rive.dart';
 
+import '../../models/checkout_model.dart';
+import '../item_navigation/ticket_all/ticket_controller.dart';
+import '../item_navigation/ticket_all/ticket_view.dart';
+import '../item_navigation/ticket_all/widget/checkout_list.dart';
+
 class detailPageView extends GetView<detailPageController>{
 
+
+  final TicketController controllerticket = Get.put(TicketController());
 
   detailPageView({super.key});
 
@@ -38,7 +45,7 @@ class detailPageView extends GetView<detailPageController>{
                     ),
                   ),
                   InkWell(
-                    onTap: ()=> Get.toNamed('/ticket'),
+                    onTap: ()=> Get.back(),
                     child: Container(
                       width: 50,
                       height: 50,
@@ -315,13 +322,17 @@ class detailPageView extends GetView<detailPageController>{
                           ),
                         ),
                         onPressed: (){
-                          Get.toNamed('/payment');
+                          // Get.toNamed('/payment');
+
+
+                          controllerticket.data.value.add(CheckoutModel(id: controller.idEvent,name:  controller.data.value.name.toString(), url:    controller.data.value.images![0].url,));
+                          // CheckoutList.checkout!.add(CheckoutModel(name:  controller.data.value.name.toString(), url:    controller.data.value.images![0].url,));
                         },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              "Buy Ticket",
+                              "Checkout",
                               style: TextStyle(
                                 color: ColorTheme.white,
                                 fontFamily: "Poppins",

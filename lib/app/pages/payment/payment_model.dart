@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 
 class Paystyle extends StatelessWidget {
   final String label;
+  final bool isReadOnly;
   final void Function(String) onChanged;
   final TextInputType? keyboardType;
 
   const Paystyle({
     required this.label,
+    required this.isReadOnly,
     required this.onChanged,
     this.keyboardType,
     Key? key,
@@ -17,6 +19,7 @@ class Paystyle extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 16.0),
       child: TextFormField(
+        readOnly: isReadOnly,
         onChanged: onChanged,
         keyboardType: keyboardType,
         decoration: InputDecoration(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kickticket/app/pages/item_navigation/homepage/widget/text_time.dart';
 import 'package:kickticket/app/pages/item_navigation/homepage/widget/upcoming_event.dart';
+import 'package:kickticket/app/pages/item_navigation/ticket_all/ticket_controller.dart';
 import '../../../../common/theme/theme.dart';
 import 'homepage_controller.dart';
 import 'widget/list_home_card.dart';
@@ -85,7 +86,8 @@ class homePageView extends GetView<homePageController> {
                     height: 20,
                   ),
 
-                  UpcomingEventsCard(),
+                  Obx(() => controller.isLoading.value?CircularProgressIndicator():
+                  UpcomingEventsCard(),),
                   SizedBox(
                     height: 20,
                   ),

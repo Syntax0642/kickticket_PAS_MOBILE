@@ -17,6 +17,9 @@ import 'package:kickticket/app/pages/login_page/login_page_view.dart';
 import 'package:kickticket/app/pages/splash_screen_page/splash_binding.dart';
 import 'package:kickticket/app/pages/splash_screen_page/splash_view.dart';
 
+import '../../app/pages/payment_method/paymentmethod_binding.dart';
+import '../../app/pages/payment_method/paymentmethod_view.dart';
+
 
 List<GetPage> routes = [
   GetPage(
@@ -61,5 +64,9 @@ List<GetPage> routes = [
     name: '/ticket',
     page:() =>  TicketDesign(),
     binding: TicketBinding(),
+  ),  GetPage(
+    name: '/payment_method',
+    page:() =>  PaymentMethodView(),
+    binding: PaymentMethodBinding(),
   ),
 ];
